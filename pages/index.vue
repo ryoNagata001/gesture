@@ -26,6 +26,14 @@
                 </div>
             </div>
         </div>
+        <div class="counter">
+            <div>正解数</div>
+            <div class="number">{{ count }}</div>
+            <div class="counter_buttons">
+                <div class="item" @click="decrement">-</div>
+                <div class="item" @click="increment">+</div>
+            </div>
+        </div>
     </div>
 </template>
 <script lang="ts">
@@ -34,6 +42,7 @@ import { verb, subject } from '@/util/odai';
 
 @Component({})
 export default class GestureGame extends Vue {
+    public count = 0;
     public isShowVerb = true;
     public isShowSub = true;
     public verb: string = '';
@@ -59,12 +68,18 @@ export default class GestureGame extends Vue {
             this.isShowSub = true;
         }, 1000);
     }
+    public increment() {
+        this.count += 1;
+    }
+    public decrement() {
+        this.count -= 1;
+    }
 }
 </script>
 <style lang="stylus" scoped>
 .gesture_game_container {
     position: relative;
-    height: 100vh;
+    // height: 100vh;
     width: 100vw;
     align-items: center;
     text-align: center;
@@ -121,6 +136,33 @@ export default class GestureGame extends Vue {
             }
         }
 
+    }
+    .counter {
+        text-align: center;
+        position: absolute;
+        right: 100px;
+        top: 300px;
+
+        .number {
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .counter_buttons {
+            display: flex;
+            justify-content: center;
+            .item {
+                cursor: pointer;
+                color: white;
+                padding: 5px;
+                width: 50px;
+                height: 50px;
+                font-size: 30px;
+
+                border-radius: 100%;
+                margin: 0 5px;
+                background-color: black;
+            }
+        }
     }
 }
 
