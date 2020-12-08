@@ -104,7 +104,7 @@ export default class GestureGame extends Vue {
         .gesture_word {
             text-align: center;
             justify-content: center;
-            font-size: 100px;
+            font-size: 80px;
             font-weight: bold;
             display: flex;
         }
